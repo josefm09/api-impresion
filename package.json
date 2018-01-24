@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
+    "grunt": "^1.0.1",
     "method-override": "^2.3.10",
     "mongoose": "^5.0.1",
     "node-thermal-printer": "^2.0.0"

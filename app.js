@@ -1,22 +1,18 @@
-var express = require("express"),
+let express = require("express"),
     app = express(),
     bodyParser  = require("body-parser"),
-    methodOverride = require("method-override");
-    mongoose = require('mongoose');
+    methodOverride = require("method-override"),
+    mongoose = require('mongoose'),
+    imprimir = require('./routes/imprimir'),
+    raiz = require('./routes/raiz');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(methodOverride());
 
-var router = express.Router();
+app.use(raiz);
+app.use(imprimir);
 
-//to do crear la funcion para imprimir con npm install node-thermal-printer 
-router.get('/', function(req, res) {
-   res.send("Hello World!");
-});
-
-app.use(router);
-
-app.listen(3000, function() {
-  console.log("Node server running on http://localhost:3000");
+app.listen(3001, function() {
+  console.log("Node server running on http://localhost:3001");
 });
