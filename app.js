@@ -4,7 +4,7 @@ let express = require("express"),
     methodOverride = require("method-override"),
     mongoose = require('mongoose'),
     imprimir = require('./src/routes/imprimir'),
-    raiz = require('./src/routes/imprimir');
+    raiz = require('./src/routes/raiz');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

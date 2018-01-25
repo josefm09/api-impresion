@@ -6,30 +6,17 @@ let express = require('express'),
 
 let router = express.Router();
 
-function setResponseHeaders(res, filename) {
+/*function setResponseHeaders(res, filename) {
     res.header('Content-disposition', 'inline; filename=' + filename);
     res.header('Content-type', 'application/pdf');
-}
+}*/
 
-router.get('/imprimir/:filename', function (req, res, next) {
-    var filename = req.params.filename;
-    file = tmpdir + filename;
-    setResponseHeaders(res, filename);
+router.get('/imprimir', function (req, res) {
+    var filePath = "/../assets/itc.pdf";
 
-    Phantom.create(function (phantom) {
-        phantom.createPage(function (page) {
-
-            function dispatchPDF() {
-                page.render(file, function () {
-                    fs.createReadStream(file).pipe(res);
-                    phantom.exit();
-                });
-            };
-
-            page.set('content', "<p>hola putita</p>");
-            page.set('paperSize', '5in');
-            page.set('onLoadFinished', dispatchPDF);
-        });
+    fs.readFile(__dirname + filePath, function (err, data) {
+        res.contentType("application/pdf");
+        res.send(data);
     });
 });
 
