@@ -3,8 +3,8 @@ let express = require("express"),
     bodyParser  = require("body-parser"),
     methodOverride = require("method-override"),
     mongoose = require('mongoose'),
-    imprimir = require('./routes/imprimir'),
-    raiz = require('./routes/raiz');
+    imprimir = require('./src/routes/imprimir'),
+    raiz = require('./src/routes/imprimir');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
