@@ -11,8 +11,9 @@ let router = express.Router();
     res.header('Content-type', 'application/pdf');
 }*/
 
-router.get('/imprimir', function (req, res) {
-    var filePath = "/../assets/itc.pdf";
+router.get('/imprimir/:file', function (req, res) {
+    let file = req.params.file;
+    let filePath = "/../assets/" + file;
 
     fs.readFile(__dirname + filePath, function (err, data) {
         res.contentType("application/pdf");
