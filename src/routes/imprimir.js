@@ -1,7 +1,6 @@
 
 let express = require('express'),
     tmpdir = require('os').tmpdir(),
-    request = require('querystring').parse(url),
     fs = require('fs');
 
 let router = express.Router();
@@ -12,8 +11,8 @@ let router = express.Router();
 }*/
 
 router.get('/imprimir/:file', function (req, res) {
-    let file = request.params.file;
-    let filePath = "/../assets" + file;
+    let file = req.params.file;
+    let filePath = "/../assets/" + file;
 
     fs.readFile(__dirname + filePath, function (err, data) {
         res.contentType("application/pdf");
