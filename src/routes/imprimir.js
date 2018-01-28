@@ -1,7 +1,7 @@
 
 let express = require('express'),
-    Phantom = require('phantom'),
     tmpdir = require('os').tmpdir(),
+    request = require('querystring').parse(url),
     fs = require('fs');
 
 let router = express.Router();
@@ -11,8 +11,9 @@ let router = express.Router();
     res.header('Content-type', 'application/pdf');
 }*/
 
-router.get('/imprimir', function (req, res) {
-    var filePath = "/../assets/itc.pdf";
+router.get('/imprimir/:file', function (req, res) {
+    let file = request.params.file;
+    let filePath = "/../assets" + file;
 
     fs.readFile(__dirname + filePath, function (err, data) {
         res.contentType("application/pdf");
