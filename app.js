@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(methodOverride());
 
-mongoose.connect('mongodb://localhost:27017/impresion');
+mongoose.connect('mongodb://chali:chali32@ds037827.mlab.com:37827/registro');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
